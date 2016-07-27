@@ -1,12 +1,11 @@
 <ion-view>
-
-
   <ion-content scroll="false">
     <map on-create="mapCreated(map)"></map>
   </ion-content>
 
   <ion-footer-bar class="bar-stable">
     <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate"></a>
+    <a ng-if="authorized" ng-click="logout()" class="button button-icon icon ion-plus-circled"></a>
   </ion-footer-bar>
 </ion-view>
 

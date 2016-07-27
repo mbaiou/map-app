@@ -1,0 +1,29 @@
+<ion-view title="Registration Page">
+  <ion-content>
+    <div>
+      <div class="list list-inset">
+        <label class="item item-input">
+          <input ng-model="username" type="text" placeholder="Email" />
+        </label>
+        <label class="item item-input">
+          <input ng-model="password" type="password" placeholder="Password"/>
+        </label>
+        <label class="item item-input">
+          <input ng-model="firstname" type="text" placeholder="First Name" />
+        </label>
+        <label class="item item-input">
+          <input ng-model="lastname" type="text" placeholder="Last Name" />
+        </label>
+        <div class="text-center">
+          <img ng-src="" ng-click="show()" height="200px" width="auto"/>
+        </div>
+      </div>
+      <div class="padding-left padding-right">
+        <div class="button-bar">
+          <a class="button" ng-click="register()">Register</a>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  </ion-view>
+

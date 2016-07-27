@@ -4,7 +4,14 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives'])
+var config = {
+  apiKey: "AIzaSyAVbSpq9464csnkObTJ6tHGVuvOqJeA3gk",
+  authDomain: "map-app-6d4a4.firebaseapp.com",
+  databaseURL: "https://map-app-6d4a4.firebaseio.com",
+  storageBucket: ""
+};
+firebase.initializeApp(config);
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives','firebase'])
 
   .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -29,7 +36,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
         url: '/app',
         abstract: true,
         templateUrl: 'templates/menu.html',
-        controller: 'AppCtrl'
+        controller: 'MenuCtrl'
       })
 
       .state('app.map', {
@@ -41,12 +48,48 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
           }
         }
       })
-
-      .state('app.browse', {
-        url: '/browse',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/browse.html'
+      .state('app.register',{
+        url:'/register',
+        views:{
+          'menuContent':{
+            templateUrl:'templates/register.html',
+            controller:'userCtrl'
+          }
+        }
+      })
+      .state('app.login',{
+        url:'/login',
+        views:{
+          'menuContent':{
+            templateUrl: 'templates/login.html',
+            controller:'userCtrl'
+          }
+        }
+      })
+      .state('app.myposts',{
+        url:'/myposts',
+        views:{
+          'menuContent':{
+            templateUrl:'templates/myposts.html',
+            controller:'UploadCtrl'
+          }
+        }
+      })
+      .state('app.detailedpost',{
+        url:'/detailedpost',
+        views:{
+          'menuContent':{
+            templateUrl:'templates/detailedposts.html',
+            controller:'UploadCtrl'
+          }
+        }
+      })
+      .state('app.myprofile',{
+        url:'/myprofile',
+        views:{
+          'menuContent':{
+            templateUrl:'templates/myprofile.html',
+            controller:'UploadCtrl'
           }
         }
       });
