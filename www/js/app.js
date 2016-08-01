@@ -53,7 +53,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
         views:{
           'menuContent':{
             templateUrl:'templates/register.html',
-            controller:'userCtrl'
+            controller:'AuthCtrl as authctrl'
           }
         }
       })
@@ -62,7 +62,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
         views:{
           'menuContent':{
             templateUrl: 'templates/login.html',
-            controller:'userCtrl'
+            controller:'AuthCtrl as authctrl'
           }
         }
       })
@@ -95,4 +95,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
       });
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/map');
-  });
+  })
+.constant('FirebaseUrl', 'https://map-app-6d4a4.firebaseio.com');

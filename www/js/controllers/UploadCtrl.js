@@ -2,7 +2,7 @@
  * Created by mohamedisse on 7/26/16.
  */
 angular.module('starter.controllers')
-.controller('UploadCtrl',function($scope, $ionicHistory, $firebaseAuth, $firebaseArray, $cordovaCamera, $state, $ionicActionSheet,$timeout) {
+.controller('UploadCtrl',function($scope) {
 
  $scope.upload = function (options) {
  $cordovaCamera.getPicture(options).then(function (imageData) {

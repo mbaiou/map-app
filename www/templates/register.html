@@ -1,29 +1,29 @@
 <ion-view title="Registration Page">
   <ion-content>
+    <div ng-show="authctrl.error">
+      <span>{{authctrl.error.message}}</span>
+    </div>
+    <form>
     <div>
       <div class="list list-inset">
         <label class="item item-input">
-          <input ng-model="username" type="text" placeholder="Email" />
+          <input type="email" placeholder="Email" ng-model="authCtrl.user.email" />
         </label>
         <label class="item item-input">
-          <input ng-model="password" type="password" placeholder="Password"/>
+          <input type="password" placeholder="Password" ng-model="authCtrl.user.password"/>
         </label>
         <label class="item item-input">
-          <input ng-model="firstname" type="text" placeholder="First Name" />
+          <input type='text' placeholder="Full Name" ng-model="authCtrl.user.name"/>
         </label>
-        <label class="item item-input">
-          <input ng-model="lastname" type="text" placeholder="Last Name" />
-        </label>
-        <div class="text-center">
-          <img ng-src="" ng-click="show()" height="200px" width="auto"/>
+        <div>
+          <img ng-src="map-app/www/img/profileimg.png" ng-click="show()" height="200px" width="auto"/>
         </div>
       </div>
-      <div class="padding-left padding-right">
-        <div class="button-bar">
-          <a class="button" ng-click="register()">Register</a>
-        </div>
       </div>
-    </div>
+      </form>
+    <button class="stable" ng-submit="authCtrl.register()">
+      Register Profile
+    </button>
   </ion-content>
   </ion-view>
 
