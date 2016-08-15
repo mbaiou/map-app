@@ -12,6 +12,7 @@ angular.module('starter')
     $scope.currentUser = {
       email: '',
       password: '',
+      fbUser: {},
       name: '',
       picture: ''
     };
@@ -23,7 +24,7 @@ angular.module('starter')
 
   $scope.login = function () {
     Auth.$signInWithEmailAndPassword($scope.currentUser.email, $scope.currentUser.password).then(function (auth) {
-      console.log(auth);
+      $scope.currentUser.fbUser = auth;
       $ionicHistory.nextViewOptions({
         historyRoot: true
       });
@@ -44,6 +45,7 @@ angular.module('starter')
         $scope.message = "User created with uid: " + firebaseUser.uid;
         console.log($scope.message);
         $scope.authorized = true;
+        $scope.currentUser.fbUser = firebaseUser;
         $ionicHistory.nextViewOptions({
           historyRoot: true
         });
@@ -55,7 +57,7 @@ angular.module('starter')
 
   $scope.logout = function(){
     console.log('signing out');
-    Auth.signOut();
+    Auth.$signOut();
     $scope.init();
   };
 
