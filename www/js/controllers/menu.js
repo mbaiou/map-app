@@ -1,9 +1,62 @@
 /**
  * Created by Moustafa on 7/26/16.
  */
-angular.module('starter.controllers', [])
+angular.module('starter')
 
-.controller('MenuCtrl', function($scope,$state,$ionicModal, $timeout) {
+.controller('MenuCtrl', [ '$scope', '$state', '$firebaseAuth', '$ionicHistory',
+  function( $scope, $state, $firebaseAuth, $ionicHistory) {
 
-  $scope.authorized = true;
-});
+  var Auth = $firebaseAuth();
+
+  $scope.init = function () {
+    $scope.currentUser = {
+      email: '',
+      password: '',
+      name: '',
+      picture: ''
+    };
+    $scope.authorized = false;
+    $state.go('app.map');
+  };
+
+  $scope.init();
+
+  $scope.login = function () {
+    Auth.$signInWithEmailAndPassword($scope.currentUser.email, $scope.currentUser.password).then(function (auth) {
+      console.log(auth);
+      $ionicHistory.nextViewOptions({
+        historyRoot: true
+      });
+      $state.go('app.map');
+      $scope.authorized = true;
+    }, function (error) {
+      $scope.error = error;
+    });
+  };
+
+  $scope.createUser = function() {
+    $scope.message = null;
+    $scope.error = null;
+
+    // Create a new user
+    Auth.$createUserWithEmailAndPassword($scope.currentUser.email, $scope.currentUser.password)
+      .then(function(firebaseUser) {
+        $scope.message = "User created with uid: " + firebaseUser.uid;
+        console.log($scope.message);
+        $scope.authorized = true;
+        $ionicHistory.nextViewOptions({
+          historyRoot: true
+        });
+        $state.go('app.createprofile');
+      }).catch(function(error) {
+      $scope.error = error;
+    });
+  };
+
+  $scope.logout = function(){
+    console.log('signing out');
+    Auth.signOut();
+    $scope.init();
+  };
+
+}]);

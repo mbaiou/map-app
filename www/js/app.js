@@ -4,14 +4,8 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-var config = {
-  apiKey: "AIzaSyAVbSpq9464csnkObTJ6tHGVuvOqJeA3gk",
-  authDomain: "map-app-6d4a4.firebaseapp.com",
-  databaseURL: "https://map-app-6d4a4.firebaseio.com",
-  storageBucket: ""
-};
-firebase.initializeApp(config);
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives','firebase'])
+
+angular.module('starter', ['ionic', 'firebase', 'ngCordova'])
 
   .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -30,6 +24,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
   })
 
   .config(function($stateProvider, $urlRouterProvider) {
+
+    var firebaseconfig = {
+      apiKey: "AIzaSyAVbSpq9464csnkObTJ6tHGVuvOqJeA3gk",
+      authDomain: "map-app-6d4a4.firebaseapp.com",
+      databaseURL: "https://map-app-6d4a4.firebaseio.com",
+      storageBucket: ""
+    };
+    firebase.initializeApp(firebaseconfig);
+
     $stateProvider
 
       .state('app', {
@@ -52,8 +55,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
         url:'/register',
         views:{
           'menuContent':{
-            templateUrl:'templates/register.html',
-            controller:'AuthCtrl as authctrl'
+            templateUrl:'templates/register.html'
+          }
+        }
+      })
+      .state('app.createprofile',{
+        url: '/createprofile',
+        views: {
+          'menuContent':{
+            templateUrl:'templates/createprofile.html',
+            controller: 'ProfileCtrl'
           }
         }
       })
@@ -61,8 +72,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
         url:'/login',
         views:{
           'menuContent':{
-            templateUrl: 'templates/login.html',
-            controller:'AuthCtrl as authctrl'
+            templateUrl: 'templates/login.html'
           }
         }
       })

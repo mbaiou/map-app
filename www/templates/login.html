@@ -1,18 +1,21 @@
 
 <ion-view title="Login Screen">
   <ion-content>
-    <form ng-submit="authctrl.login()">
+    <form ng-submit="login()">
     <div>
       <div class="list list-inset">
         <label class="item item-input">
-          <input type="email" placeholder="Email" ng-model="authCtrl.user.email" />
+          <input type="email" placeholder="Email" ng-model="currentUser.email" />
         </label>
         <label class="item item-input">
-          <input type="password" placeholder="Password" ng-model="authCtrl.user.password"/>
+          <input type="password" placeholder="Password" ng-model="currentUser.password"/>
         </label>
       </div>
       <div class="padding-left padding-right">
       </div>
     </div>
+      <button class="button button-block button-positive" >
+        Login
+      </button>
       </form>
   </ion-content>

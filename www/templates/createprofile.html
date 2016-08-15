@@ -1,0 +1,24 @@
+<ion-view title="Create Profile">
+  <ion-content>
+    <div ng-show="error">
+      <span>{{error.message}}</span>
+    </div>
+    <form>
+      <div>
+        <div class="list list-inset">
+          <label class="item item-input">
+            <input type='text' placeholder="Full Name" ng-model="currentUser.name"/>
+          </label>
+          <div class="text-center">
+            <img ng-src="img/profileimg.png" ng-click="addProfilePic()" height="200px" width="auto"/>
+          </div>
+        </div>
+      </div>
+    </form>
+    <button class="stable" ng-submit="createProfile()">
+      Register Profile
+    </button>
+  </ion-content>
+</ion-view>
+
+

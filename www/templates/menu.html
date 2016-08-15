@@ -5,10 +5,12 @@
       <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
       <h1 class="title">Image App</h1>
     </ion-header-bar>
-    <ion-nav-buttons side="left">
-
-    </ion-nav-buttons>
-    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+    <ion-nav-bar class="bar-light bar-subheader">
+      <ion-nav-back-button>
+        Back
+      </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent" class="has-header has-subheader" animation="slide-left-right"></ion-nav-view>
   </ion-pane>
 
   <ion-side-menu side="left">
@@ -17,17 +19,23 @@
     </header>
     <ion-content class="has-header">
       <ion-list>
-        <ion-item nav-clear menu-close href="#/app/myposts">
+        <ion-item nav-clear menu-close href="#/app/map">
+          Home
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/myposts" ng-if="authorized">
           My Posts
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/myprofile">
+        <ion-item nav-clear menu-close href="#/app/myprofile" ng-if="authorized">
           My Profile
         </ion-item>
-        <ion-item ng-click="register()" nav-clear menu-close href="#/app/register">
+        <ion-item nav-clear menu-close href="#/app/register" ng-if="!authorized">
         Become a Member
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/map">
-          Map
+        <ion-item  nav-clear menu-close href="#/app/login" ng-if="!authorized">
+          Login
+        </ion-item>
+        <ion-item  nav-clear menu-close ng-click="logout()" ng-if="authorized">
+          Logout
         </ion-item>
       </ion-list>
     </ion-content>
