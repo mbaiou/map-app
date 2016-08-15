@@ -4,10 +4,19 @@
 angular.module('starter')
 .service('cameraService',[ '$cordovaCamera', '$ionicActionSheet', '$timeout',
   function ($cordovaCamera, $ionicActionSheet, $timeout) {
-  
+
+    var upload = function (options) {
+      $cordovaCamera.getPicture(options).then(function (imageData) {
+        //return the image data
+        return imageData;
+      }, function (error) {
+        console.error(error);
+      });
+    };
+
     var cameraService = {
       self: this,
-      
+
       fromCamera: {
         quality: 75,
         destinationType: Camera.DestinationType.DATA_URL,
@@ -30,6 +39,7 @@ angular.module('starter')
         targetHeight: 500,
         saveToPhotoAlbum: false
       },
+
       showSheet: function () {
         console.log('actionsheet should show');
         var hideSheet = $ionicActionSheet.show({
@@ -43,10 +53,11 @@ angular.module('starter')
           },
           buttonClicked: function (index) {
             if (index === 0) {
-              self.upload(fromCamera);
+              upload(self.fromCamera);
               return true;
-            } else if (index === 1) {
-              self.upload(fromAlbum);
+            } 
+            else if (index === 1) {
+              upload(self.fromAlbum);
               return true;
             }
           }
@@ -54,19 +65,11 @@ angular.module('starter')
         $timeout(function () {
           hideSheet();
         }, 5000);
-      },
-      
-      upload: function (options) {
-        $cordovaCamera.getPicture(options).then(function (imageData) {
-            //return the image data
-          return imageData;
-        }, function (error) {
-          console.error(error);
-        });
       }
-      
+
+
     };
-    
+
     return cameraService;
-  
+
 }]);

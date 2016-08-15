@@ -1,8 +1,5 @@
 <ion-view title="Create Profile">
   <ion-content>
-    <div ng-show="error">
-      <span>{{error.message}}</span>
-    </div>
     <form>
       <div>
         <div class="list list-inset">
@@ -15,7 +12,7 @@
         </div>
       </div>
     </form>
-    <button class="stable" ng-submit="createProfile()">
+    <button class="button button-block button-positive" ng-submit="createProfile()">
       Register Profile
     </button>
   </ion-content>
