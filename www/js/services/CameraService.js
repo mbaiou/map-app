@@ -2,14 +2,19 @@
  * Created by mohamedisse on 8/12/16.
  */
 angular.module('starter')
-.service('cameraService',[ '$cordovaCamera', '$ionicActionSheet', '$timeout',
-  function ($cordovaCamera, $ionicActionSheet, $timeout) {
+.service('cameraService',[ '$cordovaCamera', '$ionicActionSheet', '$timeout','$q',
+  function ($cordovaCamera, $ionicActionSheet, $timeout, $q) {
 
     var upload = function (options) {
+      var deferred = $q.defer();
+
       $cordovaCamera.getPicture(options).then(function (imageData) {
         //return the image data
-        return imageData;
+        cameraService.image = imageData;
+
+        deferred.resolve();
       }, function (error) {
+        deferred.reject(error);
         console.error(error);
       });
     };
@@ -17,27 +22,29 @@ angular.module('starter')
     var cameraService = {
       self: this,
 
+      image: '',
+
       fromCamera: {
-        quality: 75,
-        destinationType: Camera.DestinationType.DATA_URL,
-        sourceType: Camera.PictureSourceType.CAMERA,
-        allowEdit: true,
-        encodingType: Camera.EncodingType.JPEG,
-        popoverOptions: CameraPopoverOptions,
-        targetWidth: 500,
-        targetHeight: 500,
-        saveToPhotoAlbum: false
+        // quality: 75,
+        // destinationType: Camera.DestinationType.DATA_URL,
+        // sourceType: Camera.PictureSourceType.CAMERA,
+        // allowEdit: true,
+        // encodingType: Camera.EncodingType.JPEG,
+        // popoverOptions: CameraPopoverOptions,
+        // targetWidth: 500,
+        // targetHeight: 500,
+        // saveToPhotoAlbum: false
       },
       fromAlbum: {
-        quality: 75,
-        destinationType: Camera.DestinationType.DATA_URL,
-        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-        allowEdit: true,
-        encodingType: Camera.EncodingType.JPEG,
-        popoverOptions: CameraPopoverOptions,
-        targetWidth: 500,
-        targetHeight: 500,
-        saveToPhotoAlbum: false
+        // quality: 75,
+        // destinationType: Camera.DestinationType.DATA_URL,
+        // sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        // allowEdit: true,
+        // encodingType: Camera.EncodingType.JPEG,
+        // popoverOptions: CameraPopoverOptions,
+        // targetWidth: 500,
+        // targetHeight: 500,
+        // saveToPhotoAlbum: false
       },
 
       showSheet: function () {
@@ -53,12 +60,20 @@ angular.module('starter')
           },
           buttonClicked: function (index) {
             if (index === 0) {
-              upload(self.fromCamera);
-              return true;
-            } 
+              upload(self.fromCamera).then(function () {
+                return true;
+              }, function (error) {
+                console.log(error);
+                return true;
+              });
+            }
             else if (index === 1) {
-              upload(self.fromAlbum);
-              return true;
+              upload(self.fromAlbum).then(function () {
+                return true;
+              }, function (error) {
+                console.log(error);
+                return true;
+              });
             }
           }
         });

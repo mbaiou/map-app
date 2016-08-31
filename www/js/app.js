@@ -99,7 +99,7 @@ angular.module('starter', ['ionic', 'firebase', 'ngCordova'])
         views:{
           'menuContent':{
             templateUrl:'templates/myprofile.html',
-            controller:'UploadCtrl'
+            controller:'ProfileCtrl'
           }
         }
       });
