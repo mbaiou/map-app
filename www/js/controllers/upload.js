@@ -14,7 +14,7 @@ angular.module('starter')
 
     $scope.post = {
       caption: '',
-      image: cameraService.image,
+      image: 'placeholderimage.png',
       geolocation: {
                   latitude:"",
                   longitude:"",
@@ -33,12 +33,11 @@ angular.module('starter')
 
     $scope.createPost = function(){
       console.log('Button has been pressed!');
-        var postArray = $firebaseArray(postRef);
-        postArray.$add({foo:'bar'}).then(function(postRef){
+        list.$add($scope.post).then(function(postRef){
           var id = postRef.key;
           console.log('added record with id' + id);
           console.log($scope.post); ////
-          postArray.$indexFor(id);
+          list.$indexFor(id);
           $state.go('app.myposts');
         });
     };
