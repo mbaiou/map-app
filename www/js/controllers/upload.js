@@ -37,7 +37,7 @@ angular.module('starter')
         postArray.$add({foo:'bar'}).then(function(postRef){
           var id = postRef.key;
           console.log('added record with id' + id);
-          console.log($scope.post);
+          console.log($scope.post); //
           postArray.$indexFor(id);
           $state.go('app.myposts');
         });
