@@ -6,9 +6,9 @@ angular.module('starter')
 
       var ref = firebase.database().ref();
       var postRef = ref.child('posts');
-      var postArray = $firebaseArray(postRef);
+      var list = $firebaseArray(postRef);
 
-      postArray.$loaded().then(function(){
+      list.$loaded().then(function(){
         angular.extend($scope.post, postArray)
       });
 
@@ -34,7 +34,7 @@ angular.module('starter')
     $scope.createPost = function(){
       console.log('Button has been pressed!');
         var postArray = $firebaseArray(postRef);
-        $scope.post.$add({foo:'bar'}).then(function(postRef){
+        postArray.$add({foo:'bar'}).then(function(postRef){
           var id = postRef.key;
           console.log('added record with id' + id);
           console.log($scope.post);
