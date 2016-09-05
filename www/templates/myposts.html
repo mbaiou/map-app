@@ -2,7 +2,23 @@
   <ion-nav-buttons side="left">
     <button class="button button-clear" ng-click="logout()">Logout</button>
   </ion-nav-buttons>
+
   <ion-nav-buttons side="right">
     <button class="button button-clear" ng-click="goNext()">Enlarge</button>
   </ion-nav-buttons>
 
+  <ion-content>
+    <div class = "row" ng-repeat="images in post" ng-if="$index % 4 === 0">
+      <div class ="col col-25" ng-if="$index<images.length">
+        <img ng-src="data:image/jpeg;base64, {{post[$index].image}}" width = '100%' />
+       </div>
+      <div class ="col col-25" ng-if="$index+1<images.length">
+        <img ng-src="data:image/jpeg;base64, {{post[$index].image}}" width = '100%' />
+      </div>
+      <div class ="col col-25" ng-if="$index+2<images.length">
+        <img ng-src="data:image/jpeg;base64, {{post[$index].image}}" width = '100%' />
+      </div>
+      <div class ="col col-25" ng-if="$index+3<images.length">
+        <img ng-src="data:image/jpeg;base64, {{post[$index].image}}" width = '100%' />
+      </div>
+  </div>

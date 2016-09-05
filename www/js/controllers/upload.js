@@ -5,15 +5,7 @@ angular.module('starter')
   .controller('UploadCtrl',function($scope, cameraService,$firebaseArray,$state,$location) {
 
       var ref = firebase.database().ref();
-      var list = $firebaseArray(ref);
-      list.$add({foo: "bar"}).then();
-      list.$remove(2).then();
-      $scope.list = list;
-      var id = ref.key;
-      console.log("added record with id " + id);
-      list.$indexFor(id); //return location in array
-
-      var postRef = ref('posts');
+      var postRef = ref.child('posts');
       var postArray = $firebaseArray(postRef);
 
       postArray.$loaded().then(function(){
@@ -22,8 +14,14 @@ angular.module('starter')
 
     $scope.post = {
       description: '',
-      image: 'img/profile.png',
-      geolocation: ""
+      image: cameraService.image,
+      geolocation: {
+                  latitude:"",
+                  longitude:"",
+                  locid:""
+                      },
+      createtime:"",
+      userId:""
     };
 
     $scope.takePostPic = function(){
@@ -34,20 +32,13 @@ angular.module('starter')
 
     $scope.addPost = function(){
       var list = postArray;
-      list.$add({ foo: "bar" }).then(function(ref) {
-        var id = ref.key;
+      list.$add({ foo:'bar' }).then(function(postRef) {
+        var id = postRef.key;
         console.log("added record with id " + id);
         list.$indexFor(id); // returns location in the array
       });
     };
 
-
-    $scope.goNext = function(app){
-      $location.path('/app/detailedposts');
-    };
-    $scope.navigate = function(app){
-      $location.path('app/createposts')
-    };
 
   });
 
