@@ -47,7 +47,7 @@ angular.module('starter')
         profileObject.image = $scope.profile.image;
 
       profileObject.$save().then(function(ref){
-        console.log(ref); swipe_velocity
+        console.log(ref); 
         $state.go('app.map');
       }, function (error) {
         console.log(error);

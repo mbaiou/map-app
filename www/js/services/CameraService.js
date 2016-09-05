@@ -25,26 +25,26 @@ angular.module('starter')
       image: '',
 
       fromCamera: {
-        // quality: 75,
-        // destinationType: Camera.DestinationType.DATA_URL,
-        // sourceType: Camera.PictureSourceType.CAMERA,
-        // allowEdit: true,
-        // encodingType: Camera.EncodingType.JPEG,
-        // popoverOptions: CameraPopoverOptions,
-        // targetWidth: 500,
-        // targetHeight: 500,
-        // saveToPhotoAlbum: false
+         quality: 75,
+         destinationType: Camera.DestinationType.DATA_URL,
+         sourceType: Camera.PictureSourceType.CAMERA,
+         allowEdit: true,
+         encodingType: Camera.EncodingType.JPEG,
+         popoverOptions: CameraPopoverOptions,
+         targetWidth: 500,
+         targetHeight: 500,
+         saveToPhotoAlbum: false
       },
       fromAlbum: {
-        // quality: 75,
-        // destinationType: Camera.DestinationType.DATA_URL,
-        // sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-        // allowEdit: true,
-        // encodingType: Camera.EncodingType.JPEG,
-        // popoverOptions: CameraPopoverOptions,
-        // targetWidth: 500,
-        // targetHeight: 500,
-        // saveToPhotoAlbum: false
+         quality: 75,
+         destinationType: Camera.DestinationType.DATA_URL,
+         sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+         allowEdit: true,
+         encodingType: Camera.EncodingType.JPEG,
+         popoverOptions: CameraPopoverOptions,
+         targetWidth: 500,
+         targetHeight: 500,
+         saveToPhotoAlbum: false
       },
 
       showSheet: function () {

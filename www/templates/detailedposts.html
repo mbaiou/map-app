@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<ion-view title="Enlarged View" ng-init="">
+<ion-nav-buttons side="left">
+  <button class="button button-clear" ng-click="logout()">Logout</button>
+</ion-nav-buttons>
+<ion-content>
+  <div class="row">
 
-</body>
-</html>
+  </div>
+  <div class="row" ng-repeat="post in posts" ng-if="$index % 4 === 0">
+    <div class="col col-25" ng-if="$index < images.length">
+      <img ng-src="data:image/jpeg;base64,{{images[$index].image}}" width="100%" ng-click="view(images[$index])" />
+    </div>
+    <div class="col col-25" ng-if="$index + 1 < images.length">
+      <img ng-src="data:image/jpeg;base64,{{images[$index + 1].image}}" width="100%" ng-click="view(images[$index +1 ])"/>
+    </div>
+    <div class="col col-25" ng-if="$index + 2 < images.length">
+      <img ng-src="data:image/jpeg;base64,{{images[$index + 2].image}}" width="100%" ng-click="view(images[$index+2])"/>
+    </div>
+    <div class="col col-25" ng-if="$index + 3 < images.length">
+      <img ng-src="data:image/jpeg;base64,{{images[$index + 3].image}}" width="100%" ng-click="view(images[$index+3])"/>
+    </div>
+  </div>
+</ion-content>
+</ion-view>

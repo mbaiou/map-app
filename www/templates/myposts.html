@@ -1,27 +1,8 @@
-<ion-view title="My Images" ng-init="">
+<ion-view title="My Posts" ng-init="">
   <ion-nav-buttons side="left">
     <button class="button button-clear" ng-click="logout()">Logout</button>
   </ion-nav-buttons>
   <ion-nav-buttons side="right">
-    <button class="button button-icon icon ion-camera" ng-click="createProfile(image)"></button>
+    <button class="button button-clear" ng-click="goNext()">Enlarge</button>
   </ion-nav-buttons>
-  <ion-content>
-    <div class="row">
-      {{enlargedImage.$id}}
-    </div>
-    <div class="row" ng-repeat="image in images" ng-if="$index % 4 === 0">
-      <div class="col col-25" ng-if="$index < images.length">
-        <img ng-src="data:image/jpeg;base64,{{images[$index].image}}" width="100%" ng-click="view(images[$index])" />
-      </div>
-      <div class="col col-25" ng-if="$index + 1 < images.length">
-        <img ng-src="data:image/jpeg;base64,{{images[$index + 1].image}}" width="100%" ng-click="view(images[$index +1 ])"/>
-      </div>
-      <div class="col col-25" ng-if="$index + 2 < images.length">
-        <img ng-src="data:image/jpeg;base64,{{images[$index + 2].image}}" width="100%" ng-click="view(images[$index+2])"/>
-      </div>
-      <div class="col col-25" ng-if="$index + 3 < images.length">
-        <img ng-src="data:image/jpeg;base64,{{images[$index + 3].image}}" width="100%" ng-click="view(images[$index+3])"/>
-      </div>
-    </div>
-  </ion-content>
-</ion-view>
+

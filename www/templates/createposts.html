@@ -1,0 +1,20 @@
+<ion-view title="Create Post">
+  <ion-content>
+    <form>
+      <div class="list list-inset">
+        <label class="item item-input">
+          <input type='text' placeholder="Caption" ng-model="profile.name"/>
+        </label>
+        <div class="text-center">
+          <img ng-src="{{profile.image}}" ng-click="addProfilePic()" height="200px" width="auto"/>
+        </div>
+      </div>
+      <button class="button button-block button-positive" ng-click="takePostPic()">
+        Take Picture
+      </button>
+      <button class="button button-block button-positive" ng-click="addPost()">
+        Create Post
+      </button>
+    </form>
+  </ion-content>
+</ion-view>

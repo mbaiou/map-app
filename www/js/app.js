@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 
-angular.module('starter', ['ionic', 'firebase', 'ngCordova'])
+angular.module('starter', ['ionic', 'firebase', 'ngCordova',])
 
   .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -49,7 +49,8 @@ angular.module('starter', ['ionic', 'firebase', 'ngCordova'])
             templateUrl: 'templates/map.html',
             controller: 'MapCtrl'
           }
-        }
+        },
+        cache: true
       })
       .state('app.register',{
         url:'/register',
@@ -65,6 +66,15 @@ angular.module('starter', ['ionic', 'firebase', 'ngCordova'])
           'menuContent':{
             templateUrl:'templates/createprofile.html',
             controller: 'ProfileCtrl'
+          }
+        }
+      })
+      .state('app.createposts',{
+        url:'/createposts',
+        views:{
+          'menuContent':{
+            templateUrl:'templates/createposts.html',
+            controller:'UploadCtrl'
           }
         }
       })
@@ -85,8 +95,8 @@ angular.module('starter', ['ionic', 'firebase', 'ngCordova'])
           }
         }
       })
-      .state('app.detailedpost',{
-        url:'/detailedpost',
+      .state('app.detailedposts',{
+        url:'/detailedposts',
         views:{
           'menuContent':{
             templateUrl:'templates/detailedposts.html',

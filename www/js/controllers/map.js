@@ -3,8 +3,8 @@
  */
 
 angular.module('starter')
-  .controller('MapCtrl', [ '$scope', '$ionicLoading',
-    function($scope, $ionicLoading) {
+  .controller('MapCtrl', [ '$scope', '$ionicLoading','$state',
+    function($scope, $ionicLoading,$state) {
 
     $scope.mapCreated = function(map) {
       $scope.map = map;
@@ -29,4 +29,5 @@ angular.module('starter')
         alert('Unable to get location: ' + error.message);
       });
     };
+
   }]);
