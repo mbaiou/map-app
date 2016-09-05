@@ -2,7 +2,7 @@
  * Created by mohamedisse on 7/26/16.
  */
 angular.module('starter')
-  .controller('UploadCtrl',function($scope, cameraService,$firebaseArray,$state,$location) {
+  .controller('UploadCtrl',function($scope, cameraService,$firebaseArray,$state) {
 
       var ref = firebase.database().ref();
       var postRef = ref.child('posts');
@@ -25,21 +25,24 @@ angular.module('starter')
     };
 
     $scope.takePostPic = function(){
+      console.log('Button has been pressed!');
       cameraService.showSheet();
       $scope.post.image  = cameraService.image;
       console.log($scope.post.image);
     };
 
-    $scope.addPost = function(){
-      var list = postArray;
-      list.$add({ foo:'bar' }).then(function(postRef) {
-        var id = postRef.key;
-        console.log("added record with id " + id);
-        list.$indexFor(id); // returns location in the array
-      });
+    $scope.createPost = function(){
+      console.log(' Button has been pressed!');
+        var postArray = $firebaseArray(postRef);
+        postArray.$add.({}).then(function(postRef) {
+          var id = postRef.key;
+          console.log('added record with id' + id);
+          postArray.$indexFor(id);
+          $state.go('app.myposts');
+        },function(error){
+          console.log(error);
+        });
     };
-
-
   });
 
 
