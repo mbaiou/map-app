@@ -13,7 +13,7 @@ angular.module('starter')
       });
 
     $scope.post = {
-      description: '',
+      caption: '',
       image: cameraService.image,
       geolocation: {
                   latitude:"",
@@ -32,15 +32,14 @@ angular.module('starter')
     };
 
     $scope.createPost = function(){
-      console.log(' Button has been pressed!');
+      console.log('Button has been pressed!');
         var postArray = $firebaseArray(postRef);
-        postArray.$add.({}).then(function(postRef) {
+        $scope.post.$add({foo:'bar'}).then(function(postRef){
           var id = postRef.key;
           console.log('added record with id' + id);
+          console.log($scope.post);
           postArray.$indexFor(id);
           $state.go('app.myposts');
-        },function(error){
-          console.log(error);
         });
     };
   });
